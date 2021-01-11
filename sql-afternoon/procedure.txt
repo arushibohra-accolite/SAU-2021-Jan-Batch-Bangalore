@@ -1,0 +1,10 @@
+the procedure highscore for reference:
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `highscore`(
+IN country_name varchar(20)
+)
+BEGIN
+select runsscored AS MAX from game where
+teamid=(select teamID from team where country=country_name)
+order by runsscored DESC limit 1;
+END
